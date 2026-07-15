@@ -24,7 +24,7 @@ illit = "It's me"
 
 
 # bool - 불리언형
-# True 또는 False만
+# True 또는 False만, 참거짓을 판단해줌
 # 첫 글자는 대문자, 따옴표 없이 작성
 
 ok = True
@@ -58,5 +58,30 @@ fake_num = "123"
 str = "문자열"
 ok = True
 
-print(num, type(num))  # 123 <class 'int'>
-print(num, ">>>", type(num))  # 123 >>> <class 'int'>
+# 내가 터미널에서 출력된 결과 중에서
+# type()을 사용해서 출력된 자료형을 쉽게 확인할 수 있는 방법
+print(num, type(num))  # num <class 'int'>
+print(num, ">>>", type(num))  # num: <class 'int'>
+
+# ========================
+print("=== 자료형마다 동작이 다른 것 확인하기 ===")
+print(3 + 5)  # 8 (int)
+print("3" + "5")  # 35 > str끼리 더하기는 이어 붙이기
+print("안녕하" + "세요")
+
+# ========================
+print("=== 자주 하는 실수 ====")
+
+print(0.1 + 0.8)  # 0.9
+# 위 상황에서는 출력되지만
+# 가끔 컴퓨터 내부 연산 과정에서 아주 작은 오차가 발생하는 경우도 있음
+
+# 작은 오차 해결법
+# round() 사용해서 반올림
+print(round(0.1 + 0.8, 2))  # 소수 둘째 자리를 반올림해서 0.9 출력
+
+# str과 int/float은 덧셈 불가
+print(123 + 456)  # TypeError 발생
+
+print(10 / 2)  # 5.0 (나눗셈은 결과가 딱 떨어져도 무조건 float)
+print(type(10 / 2))  # <class 'float'>
