@@ -107,3 +107,15 @@ print("정상" == "정상")  # False
 print("hello" != "hello")  # True (두 값이 동일한데 !로 인해서 값이 반대로 출력됨)
 print("hello" != "hello ")  # False
 print("hello" != "Helllo")  # True (느낌표는 결과를 뒤집는다)
+
+# 변수로 비교연산자 사용
+num1 = 123
+num2 = 456
+
+print(num1 >= num2)  # False
+print(
+    num1 >= "num2"
+)  # TypeError: '>=' not supported between instances of 'int' and 'str'
+
+hello = hi
+print(hello=hi)
