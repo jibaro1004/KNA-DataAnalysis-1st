@@ -147,3 +147,16 @@ a = int(input("수1: "))
 b = int(input("수2: "))
 print("합:", a + b)
 print("나눗셈:", a / b)
+
+name = input("성함: ")
+city = input("도시: ")
+print(name, city)
+
+
+code = "pump_A"
+status = "정상"
+hours = 1200
+day = "2006-07-16"
+
+card = "설비: " + code + "\nstatus" + "\n가동" + str(hours) + "시간\n점검" + day
+print(card)
