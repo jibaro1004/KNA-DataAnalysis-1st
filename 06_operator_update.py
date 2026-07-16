@@ -114,8 +114,75 @@ num2 = 456
 
 print(num1 >= num2)  # False
 print(
-    num1 >= "num2"
+    "num1" >= "num2"
 )  # TypeError: '>=' not supported between instances of 'int' and 'str'
 
-hello = hi
-print(hello=hi)
+# 변수에 문자열을 할당하고, 변수로 문자열 비교
+hi = "안녕"
+hello = hi  # print(hello) > 안녕
+print("===변수 hello(안녕)와 변수 hi(안녕) 비교===")
+print(hello == hi)  # True
+
+# ====================================================================
+
+# and / or / not - 논리연산자
+# and: 둘 다 True 여야 True를 반환
+# 첫 번째 조건이 False 라면 뒤에 조건은 확인 안함 -> 정답 확률이 높은 애를 앞에 배치함
+
+print(5 == 5 and 7 == 7)  # True + True = True
+print(5 == 7 and 7 == 7)  # False + True = False
+print(5 == 5 and 7 != 7)  # True + False = False
+# or: 하나라도 True라면 True 반환
+# 위 코드는 가능하다면 7!= 7 and 5=5 순서로 작성
+
+print(5 == 5 or 7 == 7)  # True + True = True
+print(5 == 7 or 7 == 7)  #
+
+print(7 == 7 or 5 == 5)
+
+print(1004 == 1004)
+print(8945 != 4546)
+print(1 > 5)
+print(5 < 8)
+print(4 >= 3)
+print(98754243324 <= 456)
+
+print("===실습4==")
+temp = 85
+temp_ok = 60 <= temp and temp <= 90
+print(temp_ok)
+
+pressure = 5
+pressure_ok = pressure <= 7 and 3 <= pressure
+print(pressure_ok)
+
+print(temp_ok and pressure_ok)
+
+print("====실습5===")
+stock = 100
+print(stock)
+stock += 50
+print(stock)
+stock -= 30
+print(stock)
+stock += 5
+print(stock)
+
+print("==== 실습6 설비 지표 계산 실전====")
+All_stock = 500
+Error_stock = 23
+Error_percent = 500 / 23
+print(Error_percent, "%")
+print(f"{Error_percent}%")
+
+Running_time = 21
+All_time = 24
+Running_rate = 21 / 24
+print(Running_rate * 100, "%")
+
+
+print("=====실습 7 시간 변환, 상자 포장 도전=====")
+
+All_running_time = 500  # 숫자는 따옴표를 붙이지 않고, 그대로 사용
+print(All_running_time // 60)  # 분을 시간으로 바꿀 때 //를 사용
+print(All_running_time % 60)  # 분을 그대로 쓰기 위해서는 그대로 사용
