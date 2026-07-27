@@ -228,7 +228,332 @@ print("a,b,c,d".count(","))
 print("=== find()===")
 # 전달받은 글자가 "첫 번째"로 나오는 위치 인덱스 반환
 # 찾는 글자가 없다면 -1을 반환
+email = "hong@comapny.com"
 print("hong@company.com")
 at = email.find("@")  # @ 위치의 인덱스인 4가 할당
 user_id = email[:at]  # hong 이라는 사용자의 아이디만 추출
 print(user_id)
+
+# SQE-00Q8이라는 설비의 SQE만 뽑아내기 (find와 슬라이싱 사용)
+sqe = "SQE-00Q8"
+
+sqe_index = sqe.find("-")
+print(sqe_index)  # 3
+sqe_fin = sqe[:sqe_index]  # sqe[0:3] > SQE
+print(sqe_fin)  # SQE
+
+
+# =========================
+print("==== index() ====")
+
+# 특정 문자열의 위치(인덱스 번호)를 반환
+# 앞에서부터 가장 처음 나오는 인덱스 번호만 반환
+# 찾는 문자열이 없으면 Error 발생
+
+email = "jibaro@spreatics.com"
+at = email.index("@")  # 5
+print(email[0:at])  # jibaro
+print(email[:at])  # 시작 번호가 0이라면 start 생략 가능
+print(email[at:])  # 끝까지 출력하고 싶고, 뒤에 몇 글자가 있는지 모르니 생략
+# 위처럼 시작하면 5번 인덱스부터 출력하기 때문에 @을 포함
+print(email[at + 1 :])  # at+1을 하면 @을 포함하지 않고 출력
+
+# find에서 했던 SQE 뽑아내기 실습 index 사용으로 바꾸기
+print("===find에서 했던 SQE 뽑아내기 실습 index 사용으로 바꾸기")
+sqe = "SQE-12345"
+sqe_index = sqe.index("-")  # - 있으니 정상 동작
+print(sqe_index)  # 3
+sqe_fin = sqe[:sqe_index]  # sqe[0:3] > SQE
+print(sqe_fin)  # SQE
+
+# 만약에
+# sqe_index = sqe.index("/") # / 없으니 Error 나고 중단
+
+
+# ======================
+print("=== count() ===")
+
+# 문자열에서 특정 문자열의 갯수 세기
+
+str = "a, b, c, d, e, a, a"
+
+# a의 갯수 세기
+print(str.count("a"))  # 3
+
+# ,의 갯수 세기
+print(str.count(","))  # 6
+
+print(str.count(", "))  # 5 # count로 찾는 문자열과 완전히 동일해야 갯수를 셈
+
+# ====================
+print("=== startswith() ===")
+
+# 특정 문자열로 시작하는지 검사
+# True/False (불리언)
+
+# EQP로 시작하는지 검사하기
+print("EQP-001".startswith("EQP"))
+
+# 변수 활용
+eqp = "EQP"
+print("EQP-001".startswith(eqp))
+# 주의사항) 변수명은 따옴표 감싸기 금지 !!!!
+
+
+# =====================
+print("==== endswith() ====")
+
+# 특정 문자열로 끝나는지 확인
+# True / False 로 반환
+
+str2 = "월요일입니다! 여러분은 할 수 있어요!"
+
+print(str2.endswith("!"))  # True
+print(str2.endswith("요!"))  # True
+print(str2.endswith("음!"))  # False
+print(str2.endswith("월요일입니다! 여러분은 할 수 있어요!"))  # True
+print(str2.endswith(" 월요일입니다! 여러분은 할 수 있어요!"))  # False
+print(str2.endswith(" 월요일입니다!           여러분은 할 수 있어요!"))  # False
+
+# 실습 5. 시작과 끝 확인하기
+
+str3 = "sensor_log.csv"
+print(str3.startswith("sensor"))
+print(str3.endswith(".csv"))
+
+# =========================
+print("=== 값은 객체다 ====")
+
+print(type("잊어먹으면 안돼."))  # <class 'str'>
+print(len("이렇게 썼죠??"))
+# endswith와 len의 차이는?
+# endswith는 .으로 연결
+# .으로 연결하는 이런 도구들은 "메서드"
+# 문자열이나 int, float처럼 특정 자료형(객체) 내부에 포함된 기능
+# len은 . 사용 안함
+# ()-> 함수
+# len과 같이 개발자가 직접 선언하지 않은 기본 제공 함수 "내장함수"
+
+# "str".startswith("s")
+# 123.startswith(1)
+# .으로 사용하는 메서드들은 특정 자료형(객체 타입)마다 다름
+# int 자료형의 객체에는 startswith라는 메서드가 없음 (결국 문자는 되지만, 숫자는 startswith 메서드가 없음)
+
+# print(len(123))  # len 내장함수는 길이를 반환하기 때문에 int 자료형은 사용 불가
+
+# =============
+# 재할당 복습
+
+num = 1
+num = num + 1  # 2
+num += 1  # 3
+# += 은 복합할당연산자
+# 원래 내 자신의 값에 다음 오는 연산자와 값을 적용해서 재할당
+
+# ================
+print("=== .upper() ===")
+
+str4 = "abcdefg"
+print(str4)  # abcdefg
+
+str4.upper  # ABCDEFG > 반환은 대문자인데, 값에 재할당은 X
+print(str4)  # abcdefg > 기존 str4의 값인 소문자를 그대로 출력
+
+
+# 앞으로 계속 대문자로 변환한 값을 사용하고 싶다면
+# 변수에 재할당
+# 변수 재할당에서 변수 스스로를 부르는 것이 가능
+# 재할당에서 변수 스스로 값을 부르려면 무조건 "재할당"이어야 함
+
+str4 = str4.upper()
+
+# 최초 변수 할당 시에는 저장된 값이 없어서
+# 변수 스스로 값을 불러와 할당 불가능
+# str5 = str5.upper()
+
+# =======================
+print("========= 실습 1. 대문자로 바꾸기 ===========")
+
+B = "WARNING"
+big = B.upper()
+print(big)
+
+# =======================
+print("========= 실습 2. 소문자로 바꾸기 ===========")
+
+s = "WARNING"
+small = s.lower()
+print(small)
+
+# ================================================================
+user_name = "kim chul soo"
+
+# capitalize는 문자열의 첫 글자만 대문자로 변환
+print(user_name.capitalize())  # Kim chul soo
+
+# title은 띄어쓰기 기준으로 각 단어의 첫 글자들을 모두 대문자로 변환
+print(user_name.title())  # Kim Chul Soo
+
+# '를 사용한 경우 다른 단어로 인식
+print("i'm full".title())  # I'M Full
+print("i'm full".title())  # I'M Full
+
+# ================================================================
+print("=======실습 5 대문자인지 소문자인지 검사하기======")
+
+hi = "ABC"
+print(hi.isupper())
+hi2 = "abc"
+print(hi2.islower())
+hi3 = "Abc"
+print(hi3.isupper())
+
+# ================================================================
+print("======== 실습 6. 파일명 규칙 한 번에 점검하기 ==========")
+silsup = "Sensor_LOG.CSV"
+low = silsup.lower()
+print(low.startswith("sensor"))
+print(low.endswith(".csv"))
+
+# ================================================================
+print("==== .strip() ====")
+
+# 공백제거
+# .strip(): 앞과 뒤의 모든 공백 제거 (중간 띄어쓰기는 그대로 유지)
+# .lstrip(): left(왼쪽) 공백만 제거
+# .rstrip(): right(오른쪽) 공백만 제거
+
+raw = "     정상      "
+print(raw.strip())  # "정상"
+print(raw.lstrip())  # "정상         "
+print(raw.rstrip())  # "            정상"
+
+# 문자열의 가운데 공백은  strip으로 지우지 못함
+print("         정          상".strip())  # wjd
+
+print(raw)  # "     정상      "
+# strip은 재할당이나 새 변수에 할당하지 않는 이상 휘발
+
+# strip으로 문자 제거
+str5 = "===정상==="
+print(str5.strip("="))  # 정상
+# 인자로 전달한 양 끝의 =이 모두 지워짐
+
+str6 = "=정상=========="
+print(str6.strip("="))  # 정상
+# 갯수 상관 없이 인자로 전달한 문자를 무조건 삭제
+print(str6.strip("=  "))  #  정상
+# strip 자체가 공백을 지우는 것이기 때문에
+# 공백 상관없이 양 끝의 해당 문자열 삭제
+
+str7 = "==정==상===="
+print(str7.strip("="))  # 정==상
+# 글자 중간에 있는 문자열은 건드리지 않음
+
+raw = "    NORMAL     "
+step1 = raw.strip()  # 'NORMAL'
+clean = raw.strip().lower()  #'normal'
+print(clean)
+
+# ===============================
+print("==== 체이닝 ====")
+
+raw = "      NORMAL     "
+# 체이닝 X
+step1 = raw.strip()  # "NORMAL"
+step2 = step1.lower()  # "normal"
+
+# 체이닝 X, 기존 변수에 재할당
+raw = raw.strip()
+raw = raw.lower()
+
+# 체이닝 O -> 이걸 가장 자주 사용함
+chain = raw.strip().lower()  # "normal"
+
+# 기존 변수에 재할당도 가능 -> 이걸 가장 자주 사용함
+raw = raw.strip().lower()
+
+# 변수에 할당하지 않고 사용 가능
+print(raw.strip())
+
+# ===================================================
+
+print("=======실습11.결과를 변수에 다시 저장하기=========")
+str = "           Warning         "
+str = str.strip()
+
+print("[" + str + "]")
+str = str.strip().lower()
+print("[" + str + "]")
+
+# strip() 메서드에 인자로 들어가는 문자열은 완전히 동일하지 않아도 전부 삭제가 됨
+
+str8 = "aaaaab 이렇게? cd"
+print(str8.strip("abcd"))  # " 이렇게? "
+print(str8.strip("abcd "))  # "이렇게?"
+print(str8.strip("bc"))  # "aaaaab 이렇게? cd"
+print(str8.strip("ab)"))  # " 이렇게? cd"
+
+# ==================================================
+print("=== replace() ===")
+
+# 특정 문자열을 제거하거나 치환할 때 사용
+# .replace("바꾸고싶은문자열", "바꿀문자열")
+# 제거할 때는 인자의 두 번째를 ""(빈 문자열)로 작성
+print("정 상 가 동".replace(" ", ""))  # 정상가동 (중간 공백 제거)
+print("    정             상 가  동".replace(" ", ""))
+# 정 상 가 동 (공백이 2칸 붙어 있는 경우만 제거)
+# " 정 상 가 동"
+
+# 글자 치환
+print("고장".replace("고장", "fault"))  # fault
+print("고장".replace("고", "fault"))  # fault장
+
+# 단어 치환
+str9 = "설비 정상 가동"
+print(str9.replace("정상", "점검"))  # 설비 점검 가동
+
+# replace() 체이닝
+num = "    010-1234-1234   "
+num = num.replace(" ", "").replace("-", "")  # 01012341234
+
+# ===================================================
+print("=== split() ===")
+# 문자열 자르기
+# 결과는 대괄호에 감싸진 "리스트" 자료형
+# 리스트는 순서가 있기 때문에
+# 왼쪽에서부터 0으로 시작하는 인덱스가 자동 생성
+
+drinks = "에스프레소 아메리카노 카페라떼"
+print(drinks.split())  # 인자를 보내지 않음
+# ['에스프레스', '아메리카노', '카페라떼']
+# "띄어쓰기"를 기준으로 나뉘어진 세 개의 문자열을 대괄호에 감싸서 반환함
+
+# 구분자를 특정하고 싶은 경우
+fruits = "딸기,거봉,키위,사쿠란보"
+print(fruits.split(","))  # 문자열 콤마를 기준으로 분할
+# ['딸기', '거봉', '키위', '사쿠란보']
+
+fruits2 = "딸기, 거봉, 키위, 사쿠란보"
+print(fruits2.split(", "))  # 문자열 콤마+ 공백 1칸을 기준으로 분할
+# ['딸기', '거봉', '키위', '사쿠란보'] > 공백 그대로 유지
+
+# 리스트의 인덱스
+fruits_list = fruits.split(",")
+print(fruits_list)  # ['딸기', '거봉', '키위', '사쿠란보']
+
+# 거봉만 출력하기
+# 출력하고자 하는 요소의 인덱스를 대괄호로 감싸서 호출
+print(fruits_list[1])  # 거봉
+print(fruits_list[3])  # 사쿠란보
+print(fruits_list[-1])  # 사쿠란보 > 음수 인덱스가 있으므로 작동함
+
+# split 횟수 제한
+num = "010-1234-1234"
+# ["010", "1234-1234"]
+print(num.split("-", 1))
+
+# ===================================
+print("======실습 3. 쉼표 기준으로 나누기=====")
+alphabet = "a,b,c,d"
+print(alphabet.split(","))
