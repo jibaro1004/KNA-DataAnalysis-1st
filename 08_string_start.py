@@ -617,8 +617,50 @@ parts = t.split(",")
 status = parts[1].strip().lower()
 print(status)
 
-# =========================================
+# ===================================================
 print("====실습 1.f-string 으로 변수 끼워 출력하기====")
 name = "온도기"
 temp = 25
 print(f"설비{name}, 온도 {temp}도")
+
+# ===================================================
+print("=== f- string ===")
+
+name = "PUMP_A"
+temp = 36
+
+# 설비 PUMP_A, 온도 36도
+# print("설비 " + name + ", 온도 " + str(temp))
+
+# f-string
+print(f"설비 {name}, 온도 {temp}도")
+
+# f- string 연산
+hour = 12
+
+# 우리는 하루에 8시간 수업을 듣고, 이는 480분입니다.
+print(f"우리는 하루에 {hour}시간 수업을 듣고, 이는 {hour * 60}분입니다.")
+
+# ==================================================
+print("===== 실습 2. f-string 안에서 계산하기=====")
+
+score1 = 99
+score2 = 96
+score3 = 98
+
+print(f"평균점수는 {(score1 + score2 + score3)/3} 입니다.")
+
+# ==================================================
+print("===== 실습 3. 소수점 자릿수 지정하기 =====")
+value = 87.456
+print(f"{value:.1f}")
+print(f"{value:.2f}")
+
+# ==================================================
+print("==== 실습 4. 센서 로그 한 줄 정리 리포트 만들기 ====")
+raw = "5, sensor_2, WARNING, 0.78912"
+parts = raw.strip().split(",")
+sid = parts[1].strip()
+status = parts[2].strip().lower()
+value = float(parts[3].strip())
+print(f"[센서{sid}] 상태 {status}, 측정값 {value:.2f}")
