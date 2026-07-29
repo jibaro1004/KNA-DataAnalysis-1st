@@ -235,3 +235,9 @@ for i in range(1, 6): # 1~5단까지 반복
 # 2, 4, 6, 8단만 출력
 # range에 간격 전달
 # if문 사용
+
+for su in range(2, 10, 2):
+    for x in range (1, 10):
+          print(f"{su} X {x}", "=", su * X)
+
+# git
