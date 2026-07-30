@@ -240,4 +240,3 @@ for su in range(2, 10, 2):
     for x in range (1, 10):
           print(f"{su} X {x}", "=", su * X)
 
-# git
